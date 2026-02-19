@@ -2299,7 +2299,8 @@ __name(maybeReloadActiveTabAfterHotReload, "maybeReloadActiveTabAfterHotReload")
 void maybeReloadActiveTabAfterHotReload();
 if (ENV.FEATURES.HOT_RELOAD) {
   try {
-    const reloadWs = new WebSocket("ws://localhost:35729");
+    const reloadUrl = ENV.HOT_RELOAD_URL || "ws://localhost:35729";
+    const reloadWs = new WebSocket(reloadUrl);
     reloadWs.onmessage = async (event) => {
       const data = JSON.parse(event.data);
       if (data.type === "reload") {
