@@ -47,11 +47,9 @@ export function extractJsonPayload(text) {
       const c = part.trim();
       // Handle language tags (e.g. ```json)
       let cleaned = c;
-      const lines = c.split('
-');
+      const lines = c.split('\n');
       if (lines.length > 1 && !lines[0].trim().startsWith('{') && !lines[0].trim().startsWith('[')) {
-        cleaned = lines.slice(1).join('
-').trim();
+        cleaned = lines.slice(1).join('\n').trim();
       }
       
       if (cleaned.startsWith("{") || cleaned.startsWith("[")) {

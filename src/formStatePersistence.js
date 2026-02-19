@@ -355,6 +355,10 @@
      * Save current form state to storage
      */
     async saveCurrentState() {
+      if (!chrome.runtime?.id) {
+        console.debug('[FormStatePersistence] Skipping save: Extension context invalidated.');
+        return;
+      }
       const state = this.captureFormState();
       if (state.fields.length === 0) return;
 
@@ -386,6 +390,7 @@
      * @returns {Promise<Object|null>} Matching state or null
      */
     async loadMatchingState() {
+      if (!chrome.runtime?.id) return null;
       try {
         const result = await chrome.storage.local.get([STORAGE_KEY]);
         const states = Array.isArray(result[STORAGE_KEY]) ? result[STORAGE_KEY] : [];
@@ -409,6 +414,7 @@
      * @param {Object} state - State to save
      */
     async saveToStorage(state) {
+      if (!chrome.runtime?.id) return;
       if (!state?.fields?.length) return;
 
       try {
