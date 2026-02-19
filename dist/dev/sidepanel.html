@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilge Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        #bilge-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.08) 0%, rgba(15, 15, 20, 0) 60%);
+            overflow: hidden;
+        }
+        .backdrop-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 8vw, 5rem);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(99, 102, 241, 0.08) 50%, rgba(255, 255, 255, 0.04) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            user-select: none;
+            text-align: center;
+        }
+        .backdrop-version {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            color: rgba(99, 102, 241, 0.15);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 4px;
+            background: rgba(99, 102, 241, 0.03);
+        }
+    </style>
+
+  <!--
+    Load the current UI bundle indirectly so we don't have to keep sidepanel.html
+    in sync with hashed filenames.
+    Priority:
+      1) sidepanel.bundle.json (extension-standalone mode)
+      2) dist/index.html fallback (legacy sync mode)
+  -->
+      <script src="commandAutocomplete.js"></script>
+      <script type="module" src="sidepanel_loader.js"></script></head>
+<body class="antialiased h-screen overflow-hidden selection:bg-accent/20 selection:text-accent">
+    <div id="bilge-backdrop">
+        <div class="backdrop-text">Bilge Extension</div>
+        <div class="backdrop-version" id="bilge-extension-version">v2.0</div>
+    </div>
+    <div id="root"></div>
+</body>
+</html>

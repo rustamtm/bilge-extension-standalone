@@ -1,0 +1,19 @@
+{
+  "name": "chrome-extension-bilge",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/dev-server.mjs",
+    "dev": "node build.mjs --watch",
+    "dev:server": "node scripts/dev-server.mjs",
+    "build": "node build.mjs",
+    "build:prod": "node build.mjs --prod",
+    "clean": "rm -rf dist",
+    "package": "npm run build:prod && cd dist/prod && zip -r ../bilge-extension.zip ."
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "ws": "^8.18.0"
+  }
+}
