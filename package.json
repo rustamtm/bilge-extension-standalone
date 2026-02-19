@@ -10,7 +10,7 @@
     "build": "node build.mjs",
     "build:prod": "node build.mjs --prod",
     "clean": "rm -rf dist",
-    "package": "npm run build:prod && cd dist/prod && zip -r ../bilge-extension.zip ."
+    "package": "zip -r bilge-extension.zip ."
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
