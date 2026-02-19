@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "source": "dist/index.html",
-  "generatedAt": "2026-02-17T23:06:51.852Z",
-  "entryJs": "assets/index-Bigs_qPn.js",
-  "entryCss": [
-    "assets/bilge-inline.css"
-  ]
-}
